@@ -11,10 +11,12 @@ public class App {
             return "proxy Car";
         });
 
-        proxyCar.run();
-
+        String str = proxyCar.run();
+        System.out.println(str);
+        System.out.println("-------------------");
         //通过外部类实现，同时对原有的实现类进行了包装
         IVehical proxyCar2 = (IVehical) Proxy.newProxyInstance(App.class.getClassLoader(),Car.class.getInterfaces(),new VehicalInvacationHandler(new Car()));
-        proxyCar2.run();
+        str = proxyCar2.run();
+        System.out.println(str);
     }
 }
